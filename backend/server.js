@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://tumhara-vercel-app.vercel.app'],
+  origin: ['http://localhost:5173', 'https://frontend-rural-healthcare-rho-59.vercel.app/'],
 }));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
