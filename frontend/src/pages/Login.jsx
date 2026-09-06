@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import API from '../api/axios';
 import { useAuth } from '../context/AuthContext';
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
+  const justRegistered = location.state?.registered;
 
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
@@ -35,6 +37,12 @@ function Login() {
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-8 rounded-xl shadow">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">Login</h2>
+
+        {justRegistered && (
+          <p className="text-green-600 dark:text-green-400 text-sm mb-4">
+            Registration successful! Please login to continue.
+          </p>
+        )}
 
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 

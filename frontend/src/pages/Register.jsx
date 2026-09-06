@@ -32,6 +32,7 @@ function Register() {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const countryOptions = useMemo(
     () => Country.getAllCountries().map((c) => ({ value: c.isoCode, label: c.name })),
@@ -109,12 +110,11 @@ function Register() {
         data.append('photo', photoFile);
       }
 
-      const res = await API.post('/auth/register', data, {
+      await API.post('/auth/register', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      login(res.data.user, res.data.token);
-      navigate(role === 'doctor' ? '/doctor-dashboard' : '/patient-dashboard');
+      navigate('/login', { state: { registered: true } });
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed. Try again.');
     } finally {
