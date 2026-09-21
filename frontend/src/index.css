@@ -5,8 +5,13 @@
 html, body {
   min-height: 100%;
   background-color: #f9fafb;
+  overflow-x: hidden;
 }
 
 html.dark, html.dark body {
   background-color: #020617;
+}
+
+#root {
+  overflow-x: hidden;
 }

@@ -67,7 +67,7 @@ function PatientDashboard() {
   const cardClass = "bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-lg shadow";
 
   return (
-    <div className="max-w-4xl mx-auto mt-8 px-4 pb-10 text-gray-800 dark:text-white">
+    <div className="max-w-4xl w-full mx-auto mt-8 px-4 pb-10 text-gray-800 dark:text-white overflow-x-hidden">
       <h1 className="text-2xl font-bold mb-6">Patient Dashboard</h1>
 
       {/* Symptom Checker */}
